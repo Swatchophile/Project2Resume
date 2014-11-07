@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html>
+
+<!--
+This is an HTML document. It contains information about how elements in the website
+are arranged. In other words, it describes the layout of a website.
+-->
+<head>
+	<title>Swatcher Sandhya Resume</title>
+	<meta name="viewport" content="width=device-width">
+	<meta charset="utf-8">
+	<link href="css/style.css" rel="stylesheet">
+	<link href="http://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+	<script src="js/jQuery.js"></script>
+	<!-- More on helper.js in the class -->
+	<script src="js/helper.js"></script>
+	<!--
+	Uncomment the <script> tag below when you're ready to add an interactive
+	Google Map to your resume!
+	-->
+	<script src="http://maps.googleapis.com/maps/api/js?libraries=places"></script>
+</head>
+<body>
+	<div id="container">
+		<!--
+		Everything from here to the <script> tag below is the skeleton of your
+		website. Your code will add information to each of the sections of the
+		resume below. You can pretty easily figure out what each section will
+		display by looking at the id or at what's written between the <h2> tags.
+		-->
+		<nav>
+			<ul>
+				<li id="menu">Skip To
+					<ul id="mainMenu">
+					</ul>
+				</li>
+			</ul>
+		</nav>
+		<header id="header" class="center-content">
+			<ul id="topContacts" class='flex-box'></ul>
+		</header>
+		<div style='clear: both;'></div>
+		<hr>
+		<div id="main">
+			<section id="workExperience" class=''>
+				<h2>
+					<a id="workL">Work Experience</a>
+				</h2>
+			</section>
+			<section id="projects">
+				<h2>
+					<a id="projectsL">Projects</a>
+				</h2>
+			</section>
+			<section id="education" class=''>
+				<h2>
+					<a id="educationL">Education</a>
+				</h2>
+			</section>
+		</div>
+		<hr>
+		<section id="mapDiv">
+			<h2>
+				<a id="mapL">Where I've Lived and Worked</a>
+			</h2>
+		</section>
+		<footer id="letsConnect" class=''>
+			<h2>Let's Connect!</h2>
+			<hr>
+			<ul id="footerContacts" class="flex-box">
+			</ul>
+		</footer>
+	</div>
+	<!--
+	The next line tells the browser where to download the JavaScript file you'll be
+	writing. In resumeBuilder.js, you'll be writing code that builds the resume
+	dynamically when this website, index.html, is opened.
+	-->
+	<script src="js/resumeBuilder.js"></script>
+	<script src="http://d3js.org/d3.v3.min.js"></script>
+	<!--
+	These scripts are written in JavaScript. You'll be breaking them down as part of
+	a quiz. Essentially, the next few lines are checking to see if you have not
+	changed each section of the resume. If you have not made any changes to a section
+	of the resume, then that part of the resume does not show up. More on this in the
+	course.
+	-->
+	<script type="text/javascript">
+	// Notice how all of a sudden there's JavaScript inside this HTML
+	// document? You can write JavaScript between <script> tags. At the end of your 
+	// JavaScript, don't forget the closing script tag with the slash (/).
+
+
+	// Also, this is a JavaScript style comment. You can comment in JavaScript with:
+
+	//   two slashes for all following characters on a single line, or
+
+	/*
+	  an opening and closing set of slash asterisks for block comments.
+	*/
+
+
+	if(document.getElementsByClassName("flex-item").length === 0) {
+	document.getElementById("topContacts").style.backgroundColor = "black";
+	}
+	if(document.getElementsByTagName("h1").length === 0) {
+	document.getElementById("header").style.backgroundColor = "black";
+	}
+	if(document.getElementsByClassName("work-entry").length === 0) {
+	document.getElementById("workExperience").style.backgroundColor = "black";
+	}
+	if(document.getElementsByClassName("project-entry").length === 0) {
+	document.getElementById("projects").style.backgroundColor = "black";
+	}
+	if(document.getElementsByClassName("education-entry").length === 0) {
+	document.getElementById("education").style.backgroundColor = "black";
+	}
+	if(document.getElementsByClassName("flex-item").length === 0) {
+	document.getElementById("letsConnect").style.backgroundColor = "black";
+	}
+	if(document.getElementById("map") == undefined) {
+	document.getElementById("mapDiv").style.backgroundColor = "black";
+	}
+	
+	//d3js chart 
+	
+	var data = [5, 4, 3, 4];
+
+	var x = d3.scale.linear()
+		.domain([0, d3.max(data)])
+		.range([0, 1500]);
+
+	d3.select(".chart")
+	  .selectAll("div")
+		.data(data)
+	  .enter().append("div")
+	  .classed("bar", true)
+		.style("width", function(d) { return x(d) + "%"; })
+		.text(function(d) { return d; });
+		
+	//function to change skill text color on hovering over chart divs
+
+	var animateSkills = function() {
+		$(".bar:eq(0)").mouseover(function() {
+			$("#skills li:eq(0)").css("color", "#e6005c");
+		});
+		$(".bar:eq(0)").mouseout(function() {
+			$("#skills li:eq(0)").css("color", "#050a23");
+		});
+		$(".bar:eq(1)").mouseover(function() {
+			$("#skills li:eq(1)").css("color", "#e6005c");
+		});
+		$(".bar:eq(1)").mouseout(function() {
+			$("#skills li:eq(1)").css("color", "#050a23");
+		});
+		$(".bar:eq(2)").mouseover(function() {
+			$("#skills li:eq(2)").css("color", "#e6005c");
+		});
+		$(".bar:eq(2)").mouseout(function() {
+			$("#skills li:eq(2)").css("color", "#050a23");
+		});
+		$(".bar:eq(3)").mouseover(function() {
+			$("#skills li:eq(3)").css("color", "#e6005c");
+		});
+		$(".bar:eq(3)").mouseout(function() {
+			$("#skills li:eq(3)").css("color", "#050a23");
+		});
+	};
+	animateSkills();
+
+	</script>
+</body>
+</html>
